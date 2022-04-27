@@ -5,7 +5,7 @@ You can easily run our project in jupyter-notebook and we also state any package
 
 - [Project Description](#Project-Description)
 - [The-First-Phase](#The-First-Phase)
-- [Implementation_Phase1 ](#Implementation_Phase1 )
+- [Implementation-Phase1 ](#Implementation_Phase1 )
 - [The-Second-Phase](#The-Second-Phase)
 
 ## Project-Description
@@ -14,7 +14,7 @@ In this project we are going to create a simple perception stack for self-drivin
 The expected output is as follows:
 1) Your pipeline should be able to detect the lanes, highlight them using a fixed color, and pain the area between them in any color you like (it’s painted green in the image above.)
 2) You’re required to be able to roughly estimate the vehicle position away from the center of the lane.
- #### Implementation_Phase1 
+ #### Implementation-Phase1 
 1) We used hough transform to detect the lines that we will draw on the lanes
 2) We used the canny function to detect all the edges in the test videos and imgs
 3) We could find the lines when we know the equation of line (the slope and interecpt)
@@ -24,7 +24,7 @@ The expected output is as follows:
 7) We called the reigon of interest function and make AND operation with the blur video to detect the region 
 8) We also handle the blanking of the lines 
 9) We also Determined the center of the lane by mapping of the actual distance in meters to pixel by knowing the center of the lane and the car
-10)There is also a Debugging mode also by put with the output videos and test imgs (the hough result ,Canny result,Region of interest and The filling between the lanes)
+10) There is also a Debugging mode also by put with the output videos and test imgs (the hough result ,Canny result,Region of interest and The filling between the lanes)
 
 
 ### The-Second-Phase 
