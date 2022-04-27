@@ -1,5 +1,16 @@
 # self-driving-car-CompVision
 You can easily run our project in jupyter-notebook and we also state any packages to install to avoid any errors
+The following commands needed to install the packages that we used
+1) For cv2 library you can use the following commands:
+**pip install opencv-python**
+if you face any probem you can upgrade the python version to the latest one
+**pip install --upgrade opencv-contrib-python**
+2) For numpy library you can use the following command:
+ **pip install numpy**
+3) For matplotlib library you can use the following command:
+**pip install matplotlib**
+4) For glob library you can use the following command:
+**pip install glob**
 
 ## Table of Contents
 
