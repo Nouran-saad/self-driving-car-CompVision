@@ -95,11 +95,16 @@ print ("Would you like to enter Debugging Mode?")
 print("Press: [n] for no")
 print("Press: Any other key for yes")
 debug = str(input())
-
+video_name='project_video.mp4'
 cap = cv.VideoCapture('project_video.mp4')
 # Check if camera opened successfully
 if (cap.isOpened()== False): 
   print("Error opening video stream or file")
+
+out = cv.VideoCapture(0)
+fps = int(cap.get(cv.CAP_PROP_FPS))
+fourcc = cv.VideoWriter_fourcc(*'mp4v')
+out = cv.VideoWriter('output/{}'.format(video_name),fourcc, fps, ( 1280, 860 ))
 
 left_line_old =((200,680),(790,450))
 right_line_old=((1200,680),(580,450))
@@ -203,8 +208,11 @@ while(cap.isOpened()):
     #resized_primary = cv.resize(vert, (1920,720))
     if (debug == 'n'):
         cv.imshow('Frame',lanes_img)
+        out.write(lanes_img)
     else:
         cv.imshow('Frame',vert)
+        out.write(vert)
+
     # Press Q on keyboard to  exit
     if cv.waitKey(25) & 0xFF == ord('q'):
       break
@@ -214,6 +222,7 @@ while(cap.isOpened()):
 
 # When everything done, release the video capture object
 cap.release()
+out.release()
 
 # Closes all the frames
 cv.destroyAllWindows()
