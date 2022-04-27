@@ -28,19 +28,20 @@ def average_slope_intercept(lines):
     right_lines   = [] # (slope, intercept)
     right_weights = [] # (length,)
     
-    for line in lines:
-        for x1, y1, x2, y2 in line:
-            if x2==x1:
-                continue # ignore a vertical line
-            slope = (y2-y1)/(x2-x1)
-            intercept = y1 - slope*x1
-            length = np.sqrt((y2-y1)**2+(x2-x1)**2)
-            if slope < 0: # y is reversed in image
-                left_lines.append((slope, intercept))
-                left_weights.append((length))
-            else:
-                right_lines.append((slope, intercept))
-                right_weights.append((length))
+    if lines is not None:
+        for line in lines:
+            for x1, y1, x2, y2 in line:
+                if x2==x1:
+                    continue # ignore a vertical line
+                slope = (y2-y1)/(x2-x1)
+                intercept = y1 - slope*x1
+                length = np.sqrt((y2-y1)**2+(x2-x1)**2)
+                if slope < 0: # y is reversed in image
+                    left_lines.append((slope, intercept))
+                    left_weights.append((length))
+                else:
+                    right_lines.append((slope, intercept))
+                    right_weights.append((length))
     
     # add more weight to longer lines    
     left_lane  = np.dot(left_weights,  left_lines) /np.sum(left_weights)  if len(left_weights) >0 else None
@@ -95,8 +96,20 @@ print ("Would you like to enter Debugging Mode?")
 print("Press: [n] for no")
 print("Press: Any other key for yes")
 debug = str(input())
-video_name='project_video.mp4'
-cap = cv.VideoCapture('project_video.mp4')
+
+
+video_n = '0'
+while video_n != '1' and video_n != '2':
+    print ("\nWhich Video Would you like to show?")
+    print("Press: [1] for Project Video")
+    print("Press: [2] for challenge Video")
+    video_n = str(input())
+    if (video_n == '1'):
+        video_name='project_video.mp4'
+    elif (video_n == '2'):
+        video_name='challenge_video.mp4'
+
+cap = cv.VideoCapture(video_name)
 # Check if camera opened successfully
 if (cap.isOpened()== False): 
   print("Error opening video stream or file")
@@ -205,12 +218,12 @@ while(cap.isOpened()):
     hori = np.concatenate((hori, resized_mask), axis = 1)
     hori = np.concatenate((hori, resized_primary), axis = 1)
     vert = np.concatenate((lanes_img, hori), axis= 0)
-    #resized_primary = cv.resize(vert, (1920,720))
+    resized_primary = cv.resize(vert, (1080, 760))
     if (debug == 'n'):
         cv.imshow('Frame',lanes_img)
         out.write(lanes_img)
     else:
-        cv.imshow('Frame',vert)
+        cv.imshow('Frame',resized_primary)
         out.write(vert)
 
     # Press Q on keyboard to  exit
