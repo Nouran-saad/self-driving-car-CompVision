@@ -1,5 +1,5 @@
 # self-driving-car-CompVision
-you can easily run our project in jupyter-notebook and we also state any packages to install to avoid any errors
+You can easily run our project in jupyter-notebook and we also state any packages to install to avoid any errors
 
 ## Table of Contents
 
@@ -25,6 +25,7 @@ The expected output is as follows:
 8) We also handle the blanking of the lines 
 9) We also Determined the center of the lane by mapping of the actual distance in meters to pixel by knowing the center of the lane and the car
 10)There is also a Debugging mode also by put with the output videos and test imgs (the hough result ,Canny result,Region of interest and The filling between the lanes)
+
 
 ### The-Second-Phase 
 The expected output is as follows:
